@@ -20,6 +20,11 @@ class App extends Component {
     const web3 = loadWeb3(dispatch)
     await web3.eth.net.getNetworkType()
     const networkId = await web3.eth.net.getId()
+    console.log(networkId)
+    const accounts = await web3.eth.getAccounts()
+    console.log(accounts)
+    const account = accounts[0]
+    console.log(account)
     await loadAccount(web3, dispatch)
     const token = await loadToken(web3, networkId, dispatch)
     if(!token) {
@@ -47,4 +52,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps)(App)
